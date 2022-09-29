@@ -51,6 +51,7 @@ export default {
     }
   },
   methods: {
+    // 登陆发起请求
     async onSubmit() {
       this.isLoading = true
       try {
@@ -58,6 +59,10 @@ export default {
         console.log(res)
         setToken(res.data.token)
         Notify({ type: 'success', message: '登录成功' })
+        // 登陆成功跳转到首页
+        this.$router.replace({
+          path: '/layout/home'
+        })
       } catch (error) {
         Notify({ type: 'danger', message: '验证码错误' })
       }
